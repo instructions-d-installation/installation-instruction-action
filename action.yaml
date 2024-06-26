@@ -1,5 +1,8 @@
 name: Installation Instruction Action
 description: Installs from a config file to your github action runner.
+branding:
+  icon: arrow-down-circle
+  color: orange
 inputs:
   path:
     description: Path to directory, file or a remote git repository url containing the config file.
