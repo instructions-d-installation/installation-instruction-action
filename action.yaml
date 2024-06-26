@@ -1,0 +1,28 @@
+name: Installation Instruction Action
+description: Installs from a config file to your github action runner.
+inputs:
+  path:
+    description: Path to directory, file or a remote git repository url containing the config file.
+    required: true
+  options:
+    description: Options as string to pass to ibi cli. (Please check locally if it works.)
+  version:
+    description: Version of installation-instruction to use. If empty, uses the latest version.
+
+runs:
+  using: composite
+  steps:
+    - name: Install Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.12
+    - name: Install Installation Instruction (latest)
+      if: ${{ inputs.version == '' }}
+      run: python -m pip install installation-instruction
+    - name: Install Installation Instruction (with version)
+      if: ${{ inputs.version != '' }}
+      run: python -m pip install 'installation-instruction==${{ inputs.version }}'
+    - name: Install from Config File
+      run: ibi install ${{ inputs.path }} ${{ inputs.options }}
+      
+  
