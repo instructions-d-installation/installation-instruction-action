@@ -18,11 +18,14 @@ runs:
         python-version: 3.12
     - name: Install Installation Instruction (latest)
       if: ${{ inputs.version == '' }}
+      shell: pwsh
       run: python -m pip install installation-instruction
     - name: Install Installation Instruction (with version)
       if: ${{ inputs.version != '' }}
+      shell: pwsh
       run: python -m pip install 'installation-instruction==${{ inputs.version }}'
     - name: Install from Config File
+      shell: pwsh
       run: ibi install ${{ inputs.path }} ${{ inputs.options }}
       
   
