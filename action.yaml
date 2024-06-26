@@ -31,6 +31,6 @@ runs:
       run: ${{ steps.cp312.outputs.python-path }} -m pip install 'installation-instruction==${{ inputs.version }}'
     - name: Install from Config File
       shell: pwsh
-      run: ibi install ${{ inputs.path }} ${{ inputs.options }}
+      run: ${{ steps.cp312.outputs.python-path }} -m installation_instruction install ${{ inputs.path }} ${{ inputs.options }}
       
   
