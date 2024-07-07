@@ -35,3 +35,22 @@
           path: ./install.cfg
           options: --something
 ```
+
+
+#### With `continue-on-error`
+
+Have a look at [contexts](https://docs.github.com/en/actions/learn-github-actions/contexts).
+
+```yaml
+    steps:
+      - name: Install from Config File
+        uses: instructions-d-installation/installation-instruction-action@0.1.2
+        id: install-another-id
+        continue-on-error: true
+        with:
+          path: ./install.cfg
+          options: --another
+          version: 0.4.0
+      - if: ${{ steps.install-another-id.outcome == "failure" }}
+        run: whatever
+```

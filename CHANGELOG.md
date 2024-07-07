@@ -9,8 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-* Added example to readme.
+* Added examples to readme.
 * Added descriptions for input to readme.
+* Added types to inputs.
 
 
 ## [0.1.2] - 2024-06-26
